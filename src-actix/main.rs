@@ -1,9 +1,10 @@
+use std::process::Child;
 use actix_web::{get, middleware, web, App, Error, HttpRequest, HttpResponse, HttpServer, Responder};
 use awc::Client;
 use futures_util::stream::StreamExt;
 use include_dir::{include_dir, Dir};
 use serde_json::json;
-use log::info;
+use log::{debug, error, info};
 
 const DEBUG: bool = cfg!(debug_assertions);
 #[actix_web::main]
