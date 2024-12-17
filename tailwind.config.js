@@ -20,14 +20,14 @@ export default {
                         foreground: "#fff",
                     },
                     secondary: "#2b2b2b",
-                    background: "#e3e3ea",
+                    background: "#ffffff",
 
                 }
             },
             dark: {
                 colors: {
                     primary: "#ff3247",
-                    secondary: "#eaeaea",
+                    secondary: "#ffffff",
                     background: "#18181b",
                 }
             },
