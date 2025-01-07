@@ -1,7 +1,17 @@
-export default function Home() {
+import FleetSidebar from "../components/fleet-overview/sidebar/FleetSidebar.tsx";
+import FleetMap from "../components/fleet-overview/FleetMap.tsx";
+
+export default function Home()
+{
     return (
-        <>
-            <h1 className="text-3xl font-bold underline">Home Page</h1>
-        </>
+        <div className={"flex flex-row w-full"}>
+            <FleetSidebar
+                contentSelection={""}
+                onContentSelectionChange={_ =>
+                {
+                }}
+            />
+            <FleetMap/>
+        </div>
     );
 }
