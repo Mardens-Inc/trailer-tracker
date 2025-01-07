@@ -26,9 +26,25 @@ export default {
             },
             dark: {
                 colors: {
-                    primary: "#ff3247",
-                    secondary: "#ffffff",
-                    background: "#18181b",
+                    primary: {
+                        DEFAULT: "hsl(20,95%,49%)",
+                        foreground: "#fff",
+                    },
+                    background: {
+                        "L200": "hsl(0,0%,13%)",
+                        "L100": "hsl(0,0%,10%)",
+                        DEFAULT: "hsl(0,0%,5%)",
+                        "L-100": "hsl(0,0%,3%)",
+                        "L-200": "hsl(0,0%,0%)",
+                    },
+                    error:{
+                        DEFAULT: "#d03e32",
+                        foreground: "#fff",
+                    },
+                    warning: {
+                        DEFAULT: "#dfa129",
+                        foreground: "#000",
+                    }
                 }
             },
         }
