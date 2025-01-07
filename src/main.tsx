@@ -6,9 +6,8 @@ import {NextUIProvider} from "@nextui-org/react";
 
 import "./assets/scss/index.scss";
 import Home from "./assets/pages/Home.tsx";
-import About from "./assets/pages/About.tsx";
 import Navigation from "./assets/components/Navigation.tsx";
-import {applyTheme} from "./assets/ts/Theme.ts";
+import ErrorPage from "./assets/pages/ErrorPage.tsx";
 
 
 ReactDOM.createRoot($("#root")[0]!).render(
@@ -21,17 +20,18 @@ ReactDOM.createRoot($("#root")[0]!).render(
 
 export function MainContentRenderer()
 {
-    applyTheme();
     const navigate = useNavigate();
     return (
         <NextUIProvider navigate={navigate}>
-            <Navigation/>
-            <Routes>
-                <Route>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/about" element={<About/>}/>
-                </Route>
-            </Routes>
+            <main className={"flex flex-row h-screen"}>
+                <Navigation/>
+                <Routes>
+                    <Route>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path={"*"} element={<ErrorPage/>}/>
+                    </Route>
+                </Routes>
+            </main>
         </NextUIProvider>
     );
 }
