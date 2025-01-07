@@ -12,7 +12,7 @@ async fn main() -> std::io::Result<()> {
 	std::env::set_var("RUST_LOG", "trace");
 	env_logger::init();
 
-	let port = 1420; // Port to listen on
+	let port = 1423; // Port to listen on
 	let server = HttpServer::new(move || {
 		let app = App::new()
 			.wrap(middleware::Logger::default())
