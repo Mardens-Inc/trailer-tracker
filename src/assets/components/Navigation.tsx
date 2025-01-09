@@ -4,6 +4,7 @@ import {TTButton} from "./variants/TTButton.tsx";
 import {useLocation} from "react-router-dom";
 import {JSX} from "react";
 import {ReportIssue} from "../ts/report.ts";
+import {useSettings} from "../providers/Settings.tsx";
 
 type MenuItem = {
     label: string;
@@ -15,7 +16,7 @@ type MenuItem = {
 
 export default function Navigation()
 {
-
+    const {open} = useSettings();
     const {pathname} = useLocation();
 
     const menuitems: MenuItem[] = [
@@ -46,7 +47,7 @@ export default function Navigation()
         {
             label: "Settings",
             icon: <Icon icon={"mage:settings-fill"} width={22}/>,
-            href: "/settings",
+            onClick: () => open(),
             placement: "bottom"
         },
         {
@@ -56,7 +57,6 @@ export default function Navigation()
             placement: "bottom"
         }
     ];
-
 
     return (
         <Navbar
@@ -72,7 +72,7 @@ export default function Navigation()
         >
             <NavbarContent className={"flex flex-col justify-start gap-2"}>
                 <Tooltip content={"Marden's Trailer Tracker"} placement={"right"} showArrow radius={"sm"} className={"flex flex-col items-center"}>
-                    <div className={"bg-gradient-to-br from-white/10 to-white/0 p-5 rounded-md w-[22px] aspect-square h-[22px] flex justify-center items-center mb-8"}>
+                    <div className={"bg-gradient-to-br from-foreground/10 to-foreground/0 p-5 rounded-md w-[22px] aspect-square h-[22px] flex justify-center items-center mb-8"}>
                         <Icon icon={"mage:delivery-truck-fill"} width={22}/>
                     </div>
                 </Tooltip>
@@ -85,7 +85,7 @@ export default function Navigation()
                                 onPress={item.onClick || undefined}
                                 variant={"flat"}
                                 color={"primary"}
-                                className={"aspect-square data-[active=false]:bg-transparent data-[active=false]:text-white/20 data-[active=false]:hover:text-white"}
+                                className={"aspect-square data-[active=false]:bg-transparent data-[active=false]:text-foreground/20 data-[active=false]:hover:text-foreground"}
                                 data-active={pathname === item.href}
                             >
                                 {item.icon}
@@ -104,7 +104,7 @@ export default function Navigation()
                                 onPress={item.onClick || undefined}
                                 variant={"flat"}
                                 color={"primary"}
-                                className={"aspect-square data-[active=false]:bg-transparent data-[active=false]:text-white/20 data-[active=false]:hover:text-white"}
+                                className={"aspect-square data-[active=false]:bg-transparent data-[active=false]:text-foreground/20 data-[active=false]:hover:text-foreground"}
                                 data-active={pathname === item.href}
                             >
                                 {item.icon}
