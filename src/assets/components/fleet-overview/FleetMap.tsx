@@ -3,6 +3,7 @@ import L from "leaflet";
 import $ from "jquery"; // Import jQuery
 import {useEffect, useState} from "react";
 import "leaflet/dist/leaflet.css";
+import {getSystemTheme, Themes, useTheme} from "../../providers/Theme.tsx";
 
 const homePosition: [number, number] = [44.55670943289804, -69.62324670490351]; // Latitude/Longitude
 
@@ -16,6 +17,7 @@ export default function FleetMap()
         {id: "Vehicle 5", position: [39.852044836582344, -113.47759755135779], status: Status.Danger}
     ];
 
+    const {theme} = useTheme();
     const [routes, setRoutes] = useState<{ [vehicleId: string]: [number, number][] }>({}); // Store route data
 
     // Function to calculate the bearing from `start` (vehicle) to `end` (home position)
@@ -81,7 +83,7 @@ export default function FleetMap()
             style={{height: "100vh", width: "100%", backgroundColor: "var(--nextui-background)"}}
             zoomControl={false}
         >
-            <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"/>
+            <TileLayer url={`https://{s}.basemaps.cartocdn.com/${(theme === Themes.SYSTEM ? getSystemTheme() : theme === Themes.DARK ? "dark" : "light")}_all/{z}/{x}/{y}{r}.png`}/>
 
             {/* Vehicle markers */}
             {vehicles.map((vehicle) =>
@@ -125,7 +127,7 @@ export default function FleetMap()
                 );
             })}
 
-            {/* Home marker */}
+            {/* FleetOverviewPage marker */}
             <Marker key="home_marker" position={homePosition} icon={HomeIcon}>
                 <Popup>
                     <b>Destination</b>
