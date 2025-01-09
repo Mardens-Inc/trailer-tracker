@@ -12,8 +12,8 @@ export default function FleetFilterDropdown()
                     variant={"bordered"}
                     color={"default"}
                     className={cn(
-                        "h-full aspect-square min-w-0 border-1 border-white/10",
-                        "data-[hover]:border-white/40"
+                        "h-full aspect-square min-w-0 border-1 border-foreground/10",
+                        "data-[hover]:border-foreground/40"
                     )}
                     size={"sm"}
                 >
