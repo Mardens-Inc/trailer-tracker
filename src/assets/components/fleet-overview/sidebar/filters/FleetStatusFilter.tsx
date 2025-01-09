@@ -22,8 +22,8 @@ export default function FleetStatusFilter(props: FleetStatusFilterProps)
             }}
             classNames={{
                 trigger: cn(
-                    "border-white/10 border-1",
-                    "data-[focus=true]:!border-white/10 data-[open=true]:!border-primary"
+                    "border-foreground/10 border-1",
+                    "data-[focus=true]:!border-foreground/10 data-[open=true]:!border-primary"
                 )
             }}
         >
